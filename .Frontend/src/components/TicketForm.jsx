@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 export default function TicketForm() {
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    await fetch('http://localhost:3000/api/tickets', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, message })
-    })
-    setEmail('')
-    setMessage('')
-  }
+    e.preventDefault();
+    await fetch("http://localhost:3000/api/tickets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, message }),
+    });
+    setEmail("");
+    setMessage("");
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -32,5 +32,5 @@ export default function TicketForm() {
       />
       <button type="submit">Submit</button>
     </form>
-  )
+  );
 }
