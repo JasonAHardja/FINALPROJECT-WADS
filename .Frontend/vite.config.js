@@ -1,7 +1,33 @@
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
+
+// // https://vite.dev/config/
+// export default defineConfig({
+//   plugins: [react()],
+// })
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => {
+  return {
+    server: {
+      proxy: {
+        "/service": {
+          target: mode === "development"
+            ? "http://localhost:5001"
+            : "e2425-wads-l4ccg7-server.csbihub.id",
+          changeOrigin: true,
+          secure: mode !== "development",
+          ws: true,
+        },
+      },
+    },
+    build: {
+      outDir: "dist",
+    },
+    plugins: [react(), tailwindcss()],
+  }
 })
