@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # build the application
-RUN npm run build
+RUN npm run dev
 
 # Use Nginx as web server
 FROM nginx:alpine
