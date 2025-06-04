@@ -19,17 +19,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.jas0n4ndrw }} -p ${{ secrets.jasondocker18 }}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Backend Image
         run: |
-          docker build -t ${{ secrets.jas0n4ndrw }}/todolist-backend:latest ./server
-          docker push ${{ secrets.jas0n4ndrw }}/todolist-backend:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/todolist-backend:latest ./server
+          docker push ${{ secrets.DOCKER_USERNAME }}/todolist-backend:latest
 
       - name: Build and Push Frontend Image
         run: |
-          docker build -t ${{ secrets.jas0n4ndrwE }}/todolist-frontend:latest ./client
-          docker push ${{ secrets.jas0n4ndrw }}/todolist-frontend:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/todolist-frontend:latest ./client
+          docker push ${{ secrets.DOCKER_USERNAME }}/todolist-frontend:latest
 
   continuous-deployment:
     needs: continuous-integration
@@ -46,10 +46,10 @@ jobs:
           echo "export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock" >> $GITHUB_ENV
 
       - name: Pull Latest Backend Image
-        run: docker pull ${{ secrets.jas0n4ndrw }}/todolist-backend:latest
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/todolist-backend:latest
 
       - name: Pull Latest Frontend Image
-        run: docker pull ${{ secrets.jas0n4ndrw }}/todolist-frontend:latest
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/todolist-frontend:latest
 
       - name: Stop and Remove Old Containers
         run: |
@@ -60,9 +60,9 @@ jobs:
         run: |
           docker compose up -d
         env:
-          EMAIL_PASSWORD: ${{ euyyujiopyukcraz }}
-          EMAIL_USER: ${{ kelvinairplane@gmail.com }}
-          RWT_SECRET: ${{ 1964a95447c951a7453ea22f2b36a0124da23b3d6b50c166bb441eea95930138 }}
-          MONGO_URI: ${{ mongodb+srv://jason:X86Iy0YSJpFybIMn@cluster0.grjrxcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 }}
-          PORT: ${{ 5001 }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          PORT: ${{ secrets.PORT }}
           #test
