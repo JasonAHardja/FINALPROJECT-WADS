@@ -1,6 +1,6 @@
 services:
   backend:
-    image: jas0n4ndrw/.backend:latest
+    image: jas0n4ndrw/todolist-backend:latest
     restart: always
     environment:
       PORT: 5001
@@ -12,7 +12,7 @@ services:
       - "3042:3042"
 
   frontend:
-    image: jas0n4ndrw/todolist/.frontend:latest
+    image: jas0n4ndrw/todolist-frontend:latest
     restart: always
     depends_on:
       - backend
