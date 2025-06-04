@@ -24,7 +24,7 @@ COPY client_nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose the application port (replace this port with client_port you received)
-EXPOSE 5173
+EXPOSE 3041
 
 # Command to run the application
 CMD ["nginx", "-g", "daemon off;"]
