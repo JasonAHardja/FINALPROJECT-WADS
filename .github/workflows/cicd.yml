@@ -3,7 +3,7 @@ name: Todolist CI/CD
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - "README.md"
   pull_request:
