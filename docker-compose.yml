@@ -3,7 +3,7 @@ services:
     image: jas0n4ndrw/todolist-backend:latest
     restart: always
     environment:
-      PORT: 5001
+      PORT: 3168
       CONNECTION_URL: mongodb+srv://jason:X86Iy0YSJpFybIMn@cluster0.grjrxcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       REFRESH_TOKEN_SECRET: 1964a95447c951a7453ea22f2b36a0124da23b3d6b50c166bb441eea95930138
       EMAIL_USER: kelvinairplane@gmail.com
