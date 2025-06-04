@@ -16,7 +16,7 @@ app.use(express.json());
 app.use('/api/tickets', ticketRoutes);
 app.use('/api/users', userRoutes); // this must come after app.use(express.json())
 
-const PORT = process.env.PORT || 27018;
+const PORT = process.env.PORT || 5001;
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
